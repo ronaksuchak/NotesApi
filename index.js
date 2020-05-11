@@ -9,7 +9,10 @@ mongoose.Promise = global.Promise;
 //setup middeleware and routes
 app.use(bodyparser.json());
 app.use('/api',require('./routes/api'));
-var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
+
+app.get('/',(req,res)=>{
+    res.send("its working...!")
+})
 
 //start server
-app.listen(4000, () => console.log("Server Started on port 4000"));
+app.listen(process.env.PORT||8080, () => console.log("Server Started on port 4000"));
